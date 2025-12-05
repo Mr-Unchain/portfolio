@@ -8,6 +8,9 @@ export const projects: Project[] = [
     description:
       "エンジニアが日々の学びを素早く記録し、検索できるようにしたミニマルなノートアプリです。タグ付けと全文検索で振り返りを効率化しました。",
     techStack: ["Next.js", "TypeScript", "Tailwind CSS", "Supabase"],
+    playlistTag: "Lo-fi Study Set",
+    category: "playlist",
+    theme: "waveform",
     role: "個人開発 (企画・設計・実装・デプロイ)",
     timeline: "2024 Q1",
     links: {
@@ -22,6 +25,9 @@ export const projects: Project[] = [
     description:
       "モバイルファーストで設計したフィットネストラッカー。カレンダー、目標設定、通知機能を実装し、日々の運動を可視化しました。",
     techStack: ["Next.js", "TypeScript", "Tailwind CSS", "Prisma", "PlanetScale"],
+    playlistTag: "Endurance Flow",
+    category: "quest",
+    theme: "dots",
     role: "個人開発 (企画・設計・実装)",
     timeline: "2023 Q4",
     links: {
@@ -36,6 +42,9 @@ export const projects: Project[] = [
     description:
       "採用担当に向けてプロジェクト概要と技術スタックを整理したシンプルなサイトです。ダークモードとレスポンシブに対応しています。",
     techStack: ["Next.js", "TypeScript", "Tailwind CSS"],
+    playlistTag: "Midnight Demo Reels",
+    category: "playlist",
+    theme: "pulse",
     role: "個人開発",
     timeline: "2024 Q2",
     links: {
