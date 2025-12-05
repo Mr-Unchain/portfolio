@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { projects, getProjectBySlug } from "@/data/projects";
 
@@ -5,6 +6,26 @@ export const dynamicParams = false;
 
 export async function generateStaticParams() {
   return projects.map((project) => ({ slug: project.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}): Promise<Metadata> {
+  const project = getProjectBySlug(params.slug);
+
+  if (!project) {
+    return {
+      title: "Project Not Found | Portfolio",
+      description: "指定されたプロジェクトは見つかりませんでした。",
+    };
+  }
+
+  return {
+    title: `${project.title} | Projects`,
+    description: project.summary,
+  };
 }
 
 export default function ProjectDetailPage({
@@ -15,7 +36,7 @@ export default function ProjectDetailPage({
   const project = getProjectBySlug(params.slug);
 
   if (!project) {
-    notFound();
+    return notFound();
   }
 
   return (
