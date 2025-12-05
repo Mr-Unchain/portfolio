@@ -4,6 +4,9 @@ export type Project = {
   summary: string;
   description: string;
   techStack: string[];
+  playlistTag: string;
+  category: "playlist" | "quest";
+  theme?: "waveform" | "dots" | "pulse";
   role?: string;
   timeline?: string;
   links?: {
