@@ -3,14 +3,7 @@
 import { SoundButton } from "./SoundButton";
 import { useSound } from "@/hooks/useSound";
 import Link from "next/link";
-
-const navItems = [
-  { href: "/", label: "Home" },
-  { href: "/projects", label: "Projects" },
-  { href: "/skills", label: "Skills" },
-  { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
-];
+import { Navbar } from "./Navbar";
 
 export function Header() {
   const { muted, toggleMute } = useSound();
@@ -22,13 +15,14 @@ export function Header() {
           Portfolio
         </Link>
         <div className="flex items-center gap-3">
-          <nav className="flex gap-2 text-sm text-slate-600 sm:gap-3">
-            {navItems.map((item) => (
-              <SoundButton key={item.href} href={item.href} variant="nav" aria-label={item.label}>
-                {item.label}
-              </SoundButton>
-            ))}
-          </nav>
+          <div className="hidden sm:block">
+            <Navbar />
+          </div>
+          <div className="sm:hidden">
+            <SoundButton href="/contact" variant="nav" aria-label="Contact shortcut" className="px-3 py-2">
+              Contact
+            </SoundButton>
+          </div>
           <SoundButton
             onClick={toggleMute}
             variant="ghost"

@@ -4,7 +4,7 @@ export const metadata = {
 
 export default function ContactPage() {
   return (
-    <div className="space-y-10">
+    <section className="space-y-10" data-section-id="contact">
       <header className="space-y-3">
         <p className="text-xs font-semibold uppercase tracking-[0.25em] text-slate-400">Contact</p>
         <h1 className="text-3xl font-semibold text-slate-900 sm:text-4xl">お問い合わせ</h1>
@@ -24,6 +24,6 @@ export default function ContactPage() {
           💼 LinkedIn: <a className="font-semibold text-sky-700 underline underline-offset-4" href="https://www.linkedin.com/in/yourname/" target="_blank" rel="noreferrer">/yourname</a>
         </p>
       </div>
-    </div>
+    </section>
   );
 }

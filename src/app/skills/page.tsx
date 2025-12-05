@@ -67,7 +67,7 @@ function ArcGauge({ value, label }: { value: number; label: string }) {
 
 export default function SkillsPage() {
   return (
-    <div className="space-y-10">
+    <section className="space-y-10" data-section-id="skills">
       <header className="space-y-3">
         <p className="text-xs font-semibold uppercase tracking-[0.25em] text-slate-400">Skills</p>
         <h1 className="text-3xl font-semibold text-slate-900 sm:text-4xl">スキルセット</h1>
@@ -130,6 +130,6 @@ export default function SkillsPage() {
           </section>
         ))}
       </div>
-    </div>
+    </section>
   );
 }

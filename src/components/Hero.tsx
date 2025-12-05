@@ -112,7 +112,10 @@ export function Hero() {
   };
 
   return (
-    <section className="overflow-hidden rounded-3xl border border-slate-800 bg-slate-950/70 p-6 shadow-xl sm:p-10">
+    <section
+      className="overflow-hidden rounded-3xl border border-slate-800 bg-slate-950/70 p-6 shadow-xl sm:p-10"
+      data-section-id="home"
+    >
       <div className="grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:items-center">
         <div className="relative isolate overflow-hidden rounded-2xl border border-slate-800/80 bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 p-8 shadow-lg transition-transform duration-500 hover:-translate-y-1">
           <div className="absolute -left-10 -top-10 h-48 w-48 rounded-full bg-sky-500/20 blur-3xl" aria-hidden />
