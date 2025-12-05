@@ -91,7 +91,7 @@ export function Navbar() {
           >
             <Link
               href={item.href}
-              className={`relative z-10 inline-flex min-w-[68px] items-center justify-center rounded-full px-3 py-1.5 text-sm font-medium transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-400 ${
+              className={`relative z-10 inline-flex min-w-[68px] items-center justify-center rounded-full px-3 py-1.5 text-sm font-medium transition focus-visible:outline-none neon-focus ${
                 activeSection === item.sectionId
                   ? "text-slate-900"
                   : "text-slate-600 hover:bg-sky-50 hover:text-sky-700"

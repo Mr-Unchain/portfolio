@@ -1,18 +1,26 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist_Mono, Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SoundProvider } from "@/hooks/useSound";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const headingFont = Space_Grotesk({
+  variable: "--font-heading",
   subsets: ["latin"],
+  display: "swap",
+});
+
+const bodyFont = Inter({
+  variable: "--font-body",
+  subsets: ["latin"],
+  display: "swap",
 });
 
 const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+  variable: "--font-mono",
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -27,9 +35,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} bg-gradient-to-b from-white via-slate-50 to-white text-slate-900 antialiased`}
-      >
+        <body
+          className={`${headingFont.variable} ${bodyFont.variable} ${geistMono.variable} bg-gradient-to-b from-white via-slate-50 to-white text-slate-900 antialiased`}
+        >
         <SoundProvider>
           <div className="flex min-h-screen flex-col">
             <Header />

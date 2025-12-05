@@ -11,7 +11,11 @@ export function Header() {
   return (
     <header className="border-b border-slate-200/80 bg-white/70 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 sm:px-10">
-        <Link href="/" className="text-lg font-semibold tracking-tight text-slate-900 transition hover:text-sky-700">
+        <Link
+          href="/"
+          aria-label="Portfolio home"
+          className="text-lg font-semibold tracking-tight text-slate-900 transition hover:text-sky-700 neon-focus"
+        >
           Portfolio
         </Link>
         <div className="flex items-center gap-3">
@@ -26,6 +30,8 @@ export function Header() {
           <SoundButton
             onClick={toggleMute}
             variant="ghost"
+            role="switch"
+            aria-checked={!muted}
             aria-label={muted ? "サウンドをオン" : "サウンドをミュート"}
             className="px-2 py-2"
           >

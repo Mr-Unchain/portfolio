@@ -27,13 +27,13 @@ type SoundButtonProps = AnchorButtonProps | RegularButtonProps;
 function getVariantClass(variant: Variant = "primary") {
   switch (variant) {
     case "outline":
-      return "rounded-full border border-slate-200 bg-white/80 text-slate-800 hover:border-sky-300 hover:bg-sky-50 hover:text-sky-800";
+      return "rounded-full border border-[color:var(--border-soft)] bg-white/80 text-slate-800 hover:border-[color:var(--accent-contrast)] hover:bg-[rgba(114,255,249,0.08)] hover:text-slate-900";
     case "ghost":
-      return "rounded-full border border-transparent text-slate-700 hover:border-slate-200 hover:bg-slate-50 hover:text-slate-900";
+      return "rounded-full border border-transparent text-slate-700 hover:border-[color:var(--border-soft)] hover:bg-[rgba(114,255,249,0.06)] hover:text-slate-900";
     case "nav":
-      return "rounded-full px-3 py-1 text-sm font-medium text-slate-600 hover:bg-sky-50 hover:text-sky-700";
+      return "rounded-full px-3 py-1 text-sm font-medium text-slate-600 hover:bg-[rgba(114,255,249,0.1)] hover:text-slate-900";
     default:
-      return "rounded-full bg-gradient-to-r from-sky-500 via-fuchsia-500 to-blue-500 text-white shadow-lg shadow-fuchsia-900/40 hover:scale-[1.02]";
+      return "rounded-full bg-[radial-gradient(circle_at_20%_20%,rgba(114,255,249,0.35),rgba(114,255,249,0.08)),linear-gradient(90deg,var(--accent-contrast),var(--accent-pop))] text-slate-950 shadow-lg shadow-fuchsia-900/30 hover:scale-[1.02]";
   }
 }
 
@@ -66,7 +66,7 @@ export function SoundButton(props: SoundButtonProps) {
   const { children, className = "", variant = "primary", ...rest } = props;
   const { playHover, playClick } = useSound();
 
-  const sharedClassNames = `inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-400 active:scale-[0.99] ${getVariantClass(variant)} ${className}`;
+  const sharedClassNames = `neon-focus inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-0 active:scale-[0.99] ${getVariantClass(variant)} ${className}`;
 
   if ("href" in rest) {
     const { href, onMouseEnter, onFocus, onClick, ...anchorProps } = rest;

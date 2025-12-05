@@ -37,9 +37,13 @@ const synthWaveSvg = (
   </svg>
 );
 
-const Slide = ({ project }: { project: Project }) => {
+const Slide = ({ project, index, total }: { project: Project; index: number; total: number }) => {
   return (
-    <div className="flex h-full min-h-[320px] flex-col justify-between rounded-2xl bg-slate-950/60 p-6 shadow-[0_25px_80px_-40px_rgba(0,0,0,0.7)] backdrop-blur-md">
+    <div
+      className="flex h-full min-h-[320px] flex-col justify-between rounded-2xl bg-slate-950/60 p-6 shadow-[0_25px_80px_-40px_rgba(0,0,0,0.7)] backdrop-blur-md"
+      role="group"
+      aria-label={`${project.title} (${index + 1} / ${total})`}
+    >
       <div className="space-y-3">
         <p className="text-xs uppercase tracking-[0.2em] text-sky-300">Featured</p>
         <h3 className="text-2xl font-semibold text-white">{project.title}</h3>
@@ -85,14 +89,25 @@ export function Hero() {
   const featuredProjects = useMemo(() => projects.slice(0, 5), []);
   const [activeIndex, setActiveIndex] = useState(0);
   const touchStartX = useRef<number | null>(null);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const handleMotionChange = () => setPrefersReducedMotion(media.matches);
+    handleMotionChange();
+    media.addEventListener("change", handleMotionChange);
+    return () => media.removeEventListener("change", handleMotionChange);
+  }, []);
 
   const nextSlide = () => setActiveIndex((prev) => (prev + 1) % featuredProjects.length);
   const prevSlide = () => setActiveIndex((prev) => (prev - 1 + featuredProjects.length) % featuredProjects.length);
 
   useEffect(() => {
+    if (prefersReducedMotion) return undefined;
     const id = setInterval(nextSlide, 5200);
     return () => clearInterval(id);
-  }, [featuredProjects.length]);
+  }, [featuredProjects.length, prefersReducedMotion]);
 
   const handleTouchStart = (event: React.TouchEvent<HTMLDivElement>) => {
     touchStartX.current = event.touches[0].clientX;
@@ -115,6 +130,7 @@ export function Hero() {
     <section
       className="overflow-hidden rounded-3xl border border-slate-800 bg-slate-950/70 p-6 shadow-xl sm:p-10"
       data-section-id="home"
+      aria-labelledby="hero-heading"
     >
       <div className="grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:items-center">
         <div className="relative isolate overflow-hidden rounded-2xl border border-slate-800/80 bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 p-8 shadow-lg transition-transform duration-500 hover:-translate-y-1">
@@ -127,7 +143,7 @@ export function Hero() {
               Portfolio 2024
             </span>
             <div className="space-y-4">
-              <h1 className="text-4xl font-semibold leading-tight text-white sm:text-5xl">
+              <h1 id="hero-heading" className="text-4xl font-semibold leading-tight text-white sm:text-5xl">
                 Crafting interfaces with rhythm & clarity.
               </h1>
               <p className="max-w-2xl text-lg leading-relaxed text-slate-200">
@@ -160,6 +176,8 @@ export function Hero() {
             maskImage: "linear-gradient(180deg, transparent, black 18%, black 82%, transparent)",
             WebkitMaskImage: "linear-gradient(180deg, transparent, black 18%, black 82%, transparent)",
           }}
+          role="region"
+          aria-label="注目プロジェクトのカルーセル"
         >
           <div className="absolute -right-14 -top-10 h-40 w-40 rounded-full bg-fuchsia-500/20 blur-3xl" aria-hidden />
           <div className="absolute -left-10 bottom-10 h-32 w-32 rounded-full bg-sky-500/20 blur-3xl" aria-hidden />
@@ -169,12 +187,14 @@ export function Hero() {
             onTouchEnd={handleTouchEnd}
           >
             <div
-              className="flex transition-transform duration-700"
+              className={`flex ${prefersReducedMotion ? "transition-none" : "transition-transform duration-700"}`}
               style={{ transform: `translateX(-${activeIndex * 100}%)` }}
+              aria-live="polite"
+              role="list"
             >
-              {featuredProjects.map((project) => (
-                <div key={project.slug} className="w-full flex-shrink-0 px-1">
-                  <Slide project={project} />
+              {featuredProjects.map((project, index) => (
+                <div key={project.slug} className="w-full flex-shrink-0 px-1" role="listitem">
+                  <Slide project={project} index={index} total={featuredProjects.length} />
                 </div>
               ))}
             </div>
