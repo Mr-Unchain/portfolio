@@ -7,24 +7,27 @@ type ProjectCardProps = {
 
 export function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <article className="rounded-xl border border-zinc-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-md">
+    <article className="group rounded-2xl border border-slate-200/80 bg-white/90 p-7 shadow-[0_20px_60px_rgba(15,23,42,0.05)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_25px_70px_rgba(15,23,42,0.08)]">
       <div className="flex items-start justify-between gap-4">
-        <div className="space-y-1">
-          <h3 className="text-lg font-semibold text-zinc-900">{project.title}</h3>
-          <p className="text-sm text-zinc-600">{project.summary}</p>
+        <div className="space-y-2">
+          <h3 className="text-lg font-semibold text-slate-900 sm:text-xl">{project.title}</h3>
+          <p className="text-sm leading-relaxed text-slate-600">{project.summary}</p>
         </div>
         <Link
           href={`/projects/${project.slug}`}
-          className="text-xs font-medium text-zinc-500 underline underline-offset-4 hover:text-zinc-800"
+          className="inline-flex items-center gap-2 rounded-full bg-sky-50 px-3 py-1 text-xs font-semibold text-sky-700 transition hover:bg-sky-100"
         >
           View
+          <span aria-hidden className="transition-transform group-hover:translate-x-0.5">
+            →
+          </span>
         </Link>
       </div>
-      <div className="mt-4 flex flex-wrap gap-2 text-xs text-zinc-600">
+      <div className="mt-5 flex flex-wrap gap-2 text-xs text-slate-600">
         {project.techStack.map((tech) => (
           <span
             key={tech}
-            className="rounded-full bg-zinc-100 px-3 py-1 text-xs text-zinc-700"
+            className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700 transition group-hover:bg-slate-200"
           >
             {tech}
           </span>

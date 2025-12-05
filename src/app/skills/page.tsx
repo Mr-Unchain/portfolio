@@ -19,26 +19,26 @@ const skillGroups = [
 
 export default function SkillsPage() {
   return (
-    <div className="space-y-6">
-      <header className="space-y-2">
-        <p className="text-sm font-medium uppercase tracking-[0.2em] text-zinc-500">
-          Skills
+    <div className="space-y-10">
+      <header className="space-y-3">
+        <p className="text-xs font-semibold uppercase tracking-[0.25em] text-slate-400">Skills</p>
+        <h1 className="text-3xl font-semibold text-slate-900 sm:text-4xl">スキルセット</h1>
+        <p className="max-w-3xl text-base leading-relaxed text-slate-600">
+          日常的に使用している技術とツールの一覧です。
         </p>
-        <h1 className="text-3xl font-semibold">スキルセット</h1>
-        <p className="text-zinc-700">日常的に使用している技術とツールの一覧です。</p>
       </header>
 
-      <div className="grid gap-4 md:grid-cols-2">
+      <div className="grid gap-5 md:grid-cols-2">
         {skillGroups.map((group) => (
           <section
             key={group.title}
-            className="space-y-3 rounded-xl border border-zinc-200 bg-white p-6"
+            className="space-y-4 rounded-3xl border border-slate-200/80 bg-white/90 p-8 shadow-sm"
           >
-            <h2 className="text-lg font-semibold">{group.title}</h2>
-            <ul className="space-y-2 text-sm text-zinc-700">
+            <h2 className="text-lg font-semibold text-slate-900">{group.title}</h2>
+            <ul className="space-y-3 text-sm text-slate-700">
               {group.items.map((item) => (
                 <li key={item} className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-zinc-900" aria-hidden />
+                  <span className="h-2 w-2 rounded-full bg-sky-500" aria-hidden />
                   {item}
                 </li>
               ))}
