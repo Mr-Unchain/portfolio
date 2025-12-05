@@ -1,3 +1,5 @@
+"use client";
+
 import type { CSSProperties, ReactNode } from "react";
 import { Project } from "@/types/project";
 import { SoundButton } from "./SoundButton";

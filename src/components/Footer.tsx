@@ -1,3 +1,5 @@
+"use client";
+
 export function Footer() {
   const steps = Array.from({ length: 12 });
   const socials = [
