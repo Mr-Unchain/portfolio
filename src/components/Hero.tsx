@@ -2,6 +2,7 @@
 
 import { projects } from "@/data/projects";
 import { Project } from "@/types/project";
+import { SoundButton } from "./SoundButton";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 const synthWaveSvg = (
@@ -131,20 +132,18 @@ export function Hero() {
               </p>
             </div>
             <div className="flex flex-wrap gap-3 text-sm font-semibold text-white">
-              <a
-                href="/contact"
-                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-sky-500 via-fuchsia-500 to-blue-500 px-5 py-3 shadow-lg shadow-fuchsia-900/50 transition hover:scale-[1.02]"
-              >
+              <SoundButton href="/contact" className="shadow-lg shadow-fuchsia-900/50">
                 Let&apos;s Jam
                 <span aria-hidden>→</span>
-              </a>
-              <a
+              </SoundButton>
+              <SoundButton
                 href="/projects"
-                className="inline-flex items-center gap-2 rounded-full border border-white/20 px-5 py-3 text-slate-100 transition hover:border-sky-400 hover:text-white"
+                variant="outline"
+                className="border-white/20 text-slate-100 hover:border-sky-400 hover:text-white"
               >
                 Let&apos;s Play
                 <span aria-hidden>→</span>
-              </a>
+              </SoundButton>
             </div>
           </div>
         </div>
