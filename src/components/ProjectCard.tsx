@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { Project } from "@/types/project";
+import { SoundButton } from "./SoundButton";
 
 type ProjectCardProps = {
   project: Project;
@@ -13,15 +13,14 @@ export function ProjectCard({ project }: ProjectCardProps) {
           <h3 className="text-lg font-semibold text-slate-900 sm:text-xl">{project.title}</h3>
           <p className="text-sm leading-relaxed text-slate-600">{project.summary}</p>
         </div>
-        <Link
+        <SoundButton
           href={`/projects/${project.slug}`}
-          className="inline-flex items-center gap-2 rounded-full bg-sky-50 px-3 py-1 text-xs font-semibold text-sky-700 transition hover:bg-sky-100"
+          variant="outline"
+          className="border-sky-100 bg-sky-50 px-3 py-1 text-xs font-semibold text-sky-700 hover:border-sky-200 hover:bg-sky-100"
         >
           View
-          <span aria-hidden className="transition-transform group-hover:translate-x-0.5">
-            →
-          </span>
-        </Link>
+          <span aria-hidden className="transition-transform group-hover:translate-x-0.5">→</span>
+        </SoundButton>
       </div>
       <div className="mt-5 flex flex-wrap gap-2 text-xs text-slate-600">
         {project.techStack.map((tech) => (

@@ -1,11 +1,15 @@
 import { Hero } from "@/components/Hero";
 import { ProjectList } from "@/components/ProjectList";
+import { RhythmMeters } from "@/components/RhythmMeters";
+import { SoundButton } from "@/components/SoundButton";
 import { projects } from "@/data/projects";
 
 export default function Home() {
   return (
     <div className="space-y-14">
       <Hero />
+
+      <RhythmMeters />
 
       <section className="space-y-5">
         <div className="flex flex-wrap items-center justify-between gap-4">
@@ -18,13 +22,14 @@ export default function Home() {
               <h2 className="text-2xl font-semibold text-slate-900">Projects</h2>
             </div>
           </div>
-          <a
+          <SoundButton
             href="/projects"
-            className="inline-flex items-center gap-2 rounded-full border border-slate-200 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-sky-200 hover:bg-sky-50 hover:text-sky-700"
+            variant="outline"
+            className="border-slate-200 text-slate-700 hover:border-sky-200 hover:bg-sky-50 hover:text-sky-700"
           >
             See all
             <span aria-hidden>→</span>
-          </a>
+          </SoundButton>
         </div>
         <ProjectList projects={projects} />
       </section>
