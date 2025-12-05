@@ -11,7 +11,7 @@ export default function Home() {
 
       <RhythmMeters />
 
-      <section className="space-y-5">
+      <section className="space-y-5" data-section-id="projects">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div className="flex items-center gap-3">
             <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-sky-50 text-sm font-semibold text-sky-700">

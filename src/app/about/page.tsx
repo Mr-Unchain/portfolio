@@ -40,7 +40,7 @@ const linerNotes = [
 
 export default function AboutPage() {
   return (
-    <div className="space-y-10">
+    <section className="space-y-10" data-section-id="about">
       <header className="space-y-3">
         <p className="text-xs font-semibold uppercase tracking-[0.25em] text-slate-400">About</p>
         <h1 className="text-3xl font-semibold text-slate-900 sm:text-4xl">自己紹介</h1>
@@ -128,6 +128,6 @@ export default function AboutPage() {
           </div>
         </section>
       </div>
-    </div>
+    </section>
   );
 }
