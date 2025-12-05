@@ -43,19 +43,27 @@ export function ProjectList({ projects }: ProjectListProps) {
 
   return (
     <section className="space-y-5">
-      <div className="flex flex-wrap items-center gap-3 rounded-2xl border border-slate-200/80 bg-white/70 p-2 shadow-sm">
+      <div
+        className="flex flex-wrap items-center gap-3 rounded-2xl border border-slate-200/80 bg-white/70 p-2 shadow-sm"
+        role="tablist"
+        aria-label="プロジェクトカテゴリ"
+      >
         {tabs.map((tab) => {
           const isActive = activeTab === tab.key;
           return (
             <button
               key={tab.key}
               onClick={() => setActiveTab(tab.key)}
-              className={`group inline-flex flex-1 min-w-[240px] flex-col gap-1 rounded-xl px-4 py-3 text-left transition ${
+              className={`group inline-flex flex-1 min-w-[240px] flex-col gap-1 rounded-xl px-4 py-3 text-left transition neon-focus focus-visible:outline-none ${
                 isActive
                   ? "bg-slate-900 text-white shadow-[0_15px_40px_rgba(15,23,42,0.15)]"
                   : "bg-white text-slate-700 hover:bg-slate-50"
               }`}
-              aria-pressed={isActive}
+              role="tab"
+              aria-selected={isActive}
+              aria-controls={`projects-panel-${tab.key}`}
+              id={`projects-tab-${tab.key}`}
+              tabIndex={isActive ? 0 : -1}
             >
               <div className="flex items-center justify-between text-sm font-semibold">
                 <span>{tab.label}</span>
@@ -75,7 +83,12 @@ export function ProjectList({ projects }: ProjectListProps) {
         })}
       </div>
 
-      <div className="grid grid-cols-1 gap-7 md:grid-cols-2 lg:gap-8">
+      <div
+        className="grid grid-cols-1 gap-7 md:grid-cols-2 lg:gap-8"
+        role="tabpanel"
+        id={`projects-panel-${activeTab}`}
+        aria-labelledby={`projects-tab-${activeTab}`}
+      >
         {filtered.length === 0 ? (
           <div className="col-span-full rounded-2xl border border-dashed border-slate-200 bg-white/60 p-8 text-center text-slate-500">
             このタブにはまだプロジェクトがありません。
